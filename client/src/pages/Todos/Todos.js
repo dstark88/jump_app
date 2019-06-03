@@ -6,7 +6,6 @@ import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, FormBtn } from "../../components/Form";
 
-
 class Todos extends Component {
   // Setting our component's initial state
   state = {
@@ -49,10 +48,10 @@ class Todos extends Component {
   // Then reload todos from the database
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.id && this.state.done) {
+    if (this.state.description) {
       API.saveTodo({
-        id: this.state.id,
-        done: this.state.done,
+        // id: this.state.id,
+        // done: this.state.done,
         description: this.state.description
       })
         .then(res => this.loadTodos())
@@ -65,30 +64,30 @@ class Todos extends Component {
       <Container fluid>
         <Row>
           <Col size="md-6">
-            <Jumbotron backgroundImage="./todo.jpg">
+            <Jumbotron>
               <h1>Add to your todo list?</h1>
             </Jumbotron>
             <form>
-              <Input
+              {/* <Input
                 value={this.state.id}
                 onChange={this.handleInputChange}
                 name="id"
-                placeholder="id (required)"
+                placeholder="id"
               />
               <Input
                 value={this.state.done}
                 onChange={this.handleInputChange}
                 name="done"
-                placeholder="done (required)"
-              />
+                placeholder="done"
+              /> */}
               <Input
                 value={this.state.description}
                 onChange={this.handleInputChange}
                 name="description"
-                placeholder="Description (Optional)"
+                placeholder="To Do Item (Required)"
               />
               <FormBtn
-                disabled={!(this.state.done && this.state.id)}
+                disabled={!(this.state.description)}
                 onClick={this.handleFormSubmit}
               >
                 Submit Todo
@@ -106,7 +105,7 @@ class Todos extends Component {
                     <ListItem key={todo._id}>
                       <a href={"/todos/" + todo._id}>
                         <strong>
-                          #{todo.id}. {todo.description}
+                          {todo.description}
                         </strong>
                       </a>
                       <DeleteBtn onClick={() => this.deleteTodo(todo._id)} />
