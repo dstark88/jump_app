@@ -4,7 +4,8 @@ import DeleteBtn from "../../components/DeleteBtn";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
-import { Input, TextArea, FormBtn } from "../../components/Form";
+import { Input, FormBtn } from "../../components/Form";
+
 
 class Todos extends Component {
   // Setting our component's initial state
@@ -64,7 +65,7 @@ class Todos extends Component {
       <Container fluid>
         <Row>
           <Col size="md-6">
-            <Jumbotron>
+            <Jumbotron backgroundImage="./todo.jpg">
               <h1>Add to your todo list?</h1>
             </Jumbotron>
             <form>

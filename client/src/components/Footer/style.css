@@ -1,0 +1,15 @@
+.footer {
+  background: #eb6863;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  min-height: 10px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  z-index: 99;
+  padding-top:1px;
+  font-family: 'Fredericka the Great', cursive;
+}
+
