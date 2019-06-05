@@ -6,8 +6,6 @@ import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, FormBtn } from "../../components/Form";
-// import { clone } from "@babel/types";
-// const { Checkbox, Button } = ReactBootstrap;
 
 class Todos extends Component {
   // Setting our component's initial state
@@ -18,13 +16,6 @@ class Todos extends Component {
     description: String
   };
 
-  // constructor() {
-  //   super();
-  //   this.state = { checkboxChecked: false };
-  //   this.handleChange = this.handleChange.bind(this);
-  //   this.handleIsItChecked = this.handleIsItChecked.bind(this);
-  //   this.handleToggle = this.handleToggle.bind(this);
-  // }
   // When the component mounts, load all todos and save them to this.state.todos
   componentDidMount() {
     this.loadTodos();
@@ -51,15 +42,17 @@ class Todos extends Component {
           } else {
             todoList[0].done = 0;
           }
-          this.setState({
-            todos: todoList,
-          });
+      this.setState({
+        todos: todoList,
+      });
+      // this.updateTodo();
   };
 
   updateTodo = id => {
     API.updateTodo(id)
-      .then(res => this.loadTodos(),
-      this.handleClickTodo()
+      .then(res => 
+        // this.handleClickTodo(),
+        this.loadTodos()
       )
       .catch(err => console.log(err));
 
@@ -116,14 +109,6 @@ class Todos extends Component {
                 name="description"
                 placeholder="To Do Item (Required)"
               />
-              {/* Done
-              <Input
-                type="text"
-                value={this.state.done || ""}
-                onChange={this.handleInputChange}
-                name="done"
-                placeholder="Enter true or false?"
-              /> */}
               <FormBtn
                 disabled={!(this.state.description)}
                 onClick={this.handleFormSubmit}
@@ -149,14 +134,8 @@ class Todos extends Component {
                         className="checked-btn"
                         handleClickTodo={this.handleClickTodo}
                       /> */}
-      {/* <div>
-        <Checkbox
-          checked={this.state.checkboxChecked}
-          onChange={this.handleChange} />
-        <Button type="button" onClick={this.handleToggle}>Toggle</Button>
-        <Button type="button" onClick={this.handleIsItChecked}>Is it checked?</Button>
-      </div>                     */}
-                      <CheckedBtn onClick={() => this.updateTodo(todo._id)} />
+     
+                      <CheckedBtn className="checked-btn" type="button" onClick={() => this.handleClickTodo(todo._id)} />
                       <a href={"/todos/" + todo._id}>
                         <strong>
                           , {todo.done}, {todo.description}, {todo.id}
@@ -175,17 +154,6 @@ class Todos extends Component {
       </Container>
     );
   }
-  // handleChange(evt) {
-  //   this.setState({ checkboxChecked: evt.target.checked });
-  // }
-  
-  // handleIsItChecked() {
-  //   console.log(this.state.checkboxChecked ? 'Yes' : 'No');
-  // }
-  
-  // handleToggle() {
-  //   this.setState({ checkboxChecked: !this.state.checkboxChecked });
-  // }
 }
 
 export default Todos;
