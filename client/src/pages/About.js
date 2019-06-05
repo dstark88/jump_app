@@ -7,14 +7,14 @@ function About() {
   return (
     <div>
       <Hero backgroundImage="../assets/images/busy.jpg">
-        <h1>Busy Todo List</h1>
-        <h2>Get busy!</h2>
+        <h1>Busy To Do List</h1>
+        <h2>Get Busy Getting Stuff Done!</h2>
       </Hero>
       <Container style={{ marginTop: 30 }} background="none">
         <Row>
           <Col size="md-12">
             <center>
-            <h1>Want to keep your busy list in one place?</h1>
+            <h1>Want to keep your busy to do list in one place?</h1>
             </center>
           </Col>
         </Row>
@@ -22,8 +22,8 @@ function About() {
           <Col size="md-12">
             <center>
             <p>
-              Get started adding items to your todo list. Waste less time trying to remember what you need to
-              do and more time doing it! I
+              Get started adding items to your to do list. Waste less time trying to remember what you need to
+              do and more time doing it!
             </p>
             </center>
           </Col>

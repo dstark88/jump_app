@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const todoSchema = new Schema({
   id: Number,
-  done: Boolean,
+  done: Number,
   description: String,
 });
 

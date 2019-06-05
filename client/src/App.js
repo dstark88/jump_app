@@ -5,20 +5,20 @@ import Todos from "./pages/Todos";
 import About from "./pages/About";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
-import Wrapper from "./components/Wrapper";
+// import Wrapper from "./components/Wrapper";
 
 
 function App() {
   return (
     <Router>
       <div>
-      <Wrapper>
+      {/* <Wrapper> */}
         <Nav /> 
           <Route exact path="/" component={About} />
           <Route exact path="/about" component={About} />
           <Route exact path="/todos" component={Todos} />
         <Footer />
-      </Wrapper>
+      {/* </Wrapper> */}
       </div>
     </Router>
   );

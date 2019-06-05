@@ -8,7 +8,7 @@ function Nav() {
         About
       </a>
       <a className="navbar-brand" href="/todos">
-        Todo List
+        To Do List
       </a>
     </nav>
   );

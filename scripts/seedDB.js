@@ -9,9 +9,9 @@ mongoose.connect(
 );
 
 const todoSeed = [
-  { id: 1, done: false, description: 'Pick up eggs' },
-  { id: 2, done: false, description: 'Pay electric bill' },
-  { id: 3, done: true, description: 'Create todo API' }
+  { id: 1, done: 0, description: 'Pick up eggs' },
+  { id: 2, done: 0, description: 'Pay electric bill' },
+  { id: 3, done: 0, description: 'Create todo API' }
 ];
 
 db.Todo
