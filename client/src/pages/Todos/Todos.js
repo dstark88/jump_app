@@ -31,17 +31,20 @@ class Todos extends Component {
   };
 
   // Marks as checked 
-  handleClickTodo = (id) => {
+  handleClickTodo = (todo) => {
     var todoList = this.state.todos
-    // for (let i = 0; i < todos.length; i++) {
-      console.log(todoList[0]._id, "state");
-        if (todoList[0].done === 0) {
-          console.log(todoList[0].done, "Done");
-          console.log("id:", todoList[0]._id);
-            todoList[0].done = 1;
+    console.log("id:", todo);
+      console.log(todoList, "todoList");
+      for (var i = 0; i < todoList.length; i++) {
+        console.log("todoList[i].done:", todoList[i].done);
+        if (todoList[i].done === 0) {
+          console.log(todoList[i].done, "Done");
+            todoList[i].done = 1;
           } else {
-            todoList[0].done = 0;
+            todoList[i].done = 0;
           }
+      }
+
       this.setState({
         todos: todoList,
       });
@@ -51,7 +54,8 @@ class Todos extends Component {
   updateTodo = id => {
     API.updateTodo(id)
       .then(res => 
-        // this.handleClickTodo(),
+        this.handleClickTodo(),
+        // this.setState({ done: res.data })
         this.loadTodos()
       )
       .catch(err => console.log(err));
@@ -96,12 +100,6 @@ class Todos extends Component {
               <h1>Add to your To Do List?</h1>
             </Jumbotron>
             <form>
-              {/* <Input
-                value={this.state.id || ""}
-                onChange={this.handleInputChange}
-                name="id"
-                placeholder="id"
-              /> */}
               Enter Description 
               <Input
                 value={this.state.description || ""}
@@ -126,19 +124,10 @@ class Todos extends Component {
                 {this.state.todos.map(todo => {
                   return (
                     <ListItem key={todo._id}>
-                      
-                      {/* <CheckedBtn
-                        key={todo._id}
-                        id={todo._id}
-                        name={todo.done}
-                        className="checked-btn"
-                        handleClickTodo={this.handleClickTodo}
-                      /> */}
-     
                       <CheckedBtn className="checked-btn" type="button" onClick={() => this.handleClickTodo(todo._id)} />
                       <a href={"/todos/" + todo._id}>
                         <strong>
-                          , {todo.done}, {todo.description}, {todo.id}
+                        , {todo.done}, {todo.description}
                         </strong>
                       </a>
                       <DeleteBtn onClick={() => this.deleteTodo(todo._id)} />
