@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 export default {
   // Gets all todos
@@ -11,7 +11,7 @@ export default {
   },
   // updates the todo with given id
   updateTodo: function(id) {
-    return axios.update("/api/todos/" + id);
+    return axios.put("/api/todos/" + id);
   },
   // Deletes the todo with the given id
   deleteTodo: function(id) {

@@ -40,10 +40,10 @@ class Todos extends Component {
   };
 
   // Marks as checked 
-  handleClickTodo = id => {
+  handleClickTodo = (id) => {
     var todoList = this.state.todos
     // for (let i = 0; i < todos.length; i++) {
-      console.log(this.state.todos._id, "state");
+      console.log(todoList[0]._id, "state");
         if (todoList[0].done === 0) {
           console.log(todoList[0].done, "Done");
           console.log("id:", todoList[0]._id);
@@ -57,10 +57,12 @@ class Todos extends Component {
   };
 
   updateTodo = id => {
-    this.handleClickTodo();
     API.updateTodo(id)
-      .then(res => this.loadTodos())
+      .then(res => this.loadTodos(),
+      this.handleClickTodo()
+      )
       .catch(err => console.log(err));
+
   };
   // Deletes a todo from the database with a given id, then reloads todos from the db
   deleteTodo = id => {
@@ -139,20 +141,14 @@ class Todos extends Component {
                 {this.state.todos.map(todo => {
                   return (
                     <ListItem key={todo._id}>
-                    {this.state.todos.map(todo => (
                       
-                      <CheckedBtn onClick={() => this.updateTodo(todo._id)} 
-                        // handleClickTodo={this.handleClickTodo}
-                      />
-
-                      // <CheckedBtn
-                      //   key={todo._id}
-                      //   id={todo._id}
-                      //   name={todo.done}
-                      //   className="checked-btn"
-                      //   handleClickTodo={this.handleClickTodo}
-                      // />
-                    ))}
+                      {/* <CheckedBtn
+                        key={todo._id}
+                        id={todo._id}
+                        name={todo.done}
+                        className="checked-btn"
+                        handleClickTodo={this.handleClickTodo}
+                      /> */}
       {/* <div>
         <Checkbox
           checked={this.state.checkboxChecked}
@@ -160,6 +156,7 @@ class Todos extends Component {
         <Button type="button" onClick={this.handleToggle}>Toggle</Button>
         <Button type="button" onClick={this.handleIsItChecked}>Is it checked?</Button>
       </div>                     */}
+                      <CheckedBtn onClick={() => this.updateTodo(todo._id)} />
                       <a href={"/todos/" + todo._id}>
                         <strong>
                           , {todo.done}, {todo.description}, {todo.id}
